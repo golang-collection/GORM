@@ -3,7 +3,7 @@ package conn
 /**
 * @Author: super
 * @Date: 2020-08-11 16:09
-* @Description: gorm自动映射操作activitys表
+* @Description: gorm自动映射操作activities表
 **/
 
 import (
@@ -76,4 +76,18 @@ func DeleteActivity(id int) error {
 	}
 
 	return  nil
+}
+
+func CountActivity() (int, error) {
+	db := tools.GetDB()
+
+	var count int
+
+	result := db.Model(&model.Activity{}).Count(&count)
+
+	if result.RecordNotFound(){
+		return -1, errors.New("count error")
+	}
+
+	return  count, nil
 }

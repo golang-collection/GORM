@@ -63,3 +63,11 @@ func TestDeleteActivity(t *testing.T) {
 		t.FailNow()
 	}
 }
+
+func TestCountActivity(t *testing.T) {
+	count, err := CountActivity()
+	if err != nil{
+		t.FailNow()
+	}
+	fmt.Println(count)
+}
